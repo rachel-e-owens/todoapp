@@ -29,31 +29,39 @@ const TodoWrapper = () => {
         console.log(id)
         setTodos(
             todos.map((todo) => 
-            todo.id === id ? {...todo, isEditing: !todo.isEditing} : todo));
-        console.log('set todos')
+            todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
+            )
+        );
+        console.log('editing todos')
     }
 
     const editTask = (task, id) => {
-        setTodos(todos.map(todo => todo.id === id ? {...todo, task, isEditing: !todo.isEdiiting}: todo))
-    }
-
-  return (
-    <div className='TodoWrapper'>
-        <h1>Get Things Done!</h1>
-        <TodoForm addTodo={addTodo}/>
-        {todos.map((todo) => (
-            todo.isEdiiting ? (
-                <EditTodoForm editTodo={editTask} task={todo} />
-            ) : (
-                <Todo task={todo} key={todo.id} 
-                toggleComplete={toggleComplete} 
-                deleteTodo={deleteTodo} 
-                editTodo={editTodo} />
+        setTodos(todos.map((todo) => 
+            todo.id === id ? { ...todo, task, isEditing: !todo.isEdiiting }: todo
             )
-            
-        ))}
-    </div>
-  )
-}
+        );
+    };
+
+    return (
+        <div className="TodoWrapper">
+        <h1>Get Things Done !</h1>
+        <TodoForm addTodo={addTodo} />
+        {/* display todos */}
+        {todos.map((todo) =>
+            todo.isEditing ? (
+            <EditTodoForm editTodo={editTask} task={todo} />
+            ) : (
+            <Todo
+                key={todo.id}
+                task={todo}
+                deleteTodo={deleteTodo}
+                editTodo={editTodo}
+                toggleComplete={toggleComplete}
+            />
+            )
+        )}
+        </div>
+  );
+};
 
 export default TodoWrapper
