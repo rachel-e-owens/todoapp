@@ -1,0 +1,6 @@
+Future Features To Include:
+- due dates
+- history
+- calendar integration
+- repeats
+- smart repeats (if mark off a few days early or late, repeat auto updates) 
