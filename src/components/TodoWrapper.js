@@ -34,13 +34,14 @@ const TodoWrapper = () => {
         );
         console.log('editing todos')
     }
-
+    
     const editTask = (task, id) => {
-        setTodos(todos.map((todo) => 
-            todo.id === id ? { ...todo, task, isEditing: !todo.isEdiiting }: todo
-            )
+        setTodos(
+          todos.map((todo) =>
+            todo.id === id ? { ...todo, task, isEditing: !todo.isEditing } : todo
+          )
         );
-    };
+      };
 
     return (
         <div className="TodoWrapper">
